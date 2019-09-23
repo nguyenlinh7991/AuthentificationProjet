@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 })
 export class FirebaseAuthService {
 
-  constructor( private authFire: AngularFireAuth ) { }
+  constructor( private authFire: AngularFireAuth) { }
   /**
    * 
    * @param email :String - Email user
@@ -14,7 +14,10 @@ export class FirebaseAuthService {
    */
   signup(email: string , password: string){
       this.authFire.auth.createUserWithEmailAndPassword(email, password).then(
-        reponse => {console.log(reponse)}
+        reponse => {
+          console.log(reponse);
+
+        }
       ).catch(error =>{
         console.log("error", error)
       })

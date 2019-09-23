@@ -9,10 +9,12 @@ import { environment } from '../environments/environment';
 import { RegisterComponent } from './@page/register/register.component';
 import { FirebaseAuthService } from './providers/firebase-auth.service';
 import { FormsModule } from '@angular/forms';
+import { HomeComponent } from './@page/home/home.component';
 @NgModule({
   declarations: [
     AppComponent,
-    RegisterComponent
+    RegisterComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
