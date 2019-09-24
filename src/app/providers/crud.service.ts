@@ -24,12 +24,19 @@ export class CrudService {
    return this.db.collection("articles").add(articleData).then(res =>{console.log(res)}).catch((error)=>{console.log(error)});
   }
 
-//   updateData(data) {
-//    this.db.collection("articles").doc(data.payload.doc.id).set(data);
-//  }
+  updateData(idData,data) {
+    return  this.db.collection("articles").doc(idData).set({
+      title: data.title, 
+      autor: data.autor,
+      photoUrl: data.photo,
+      subtitle: data.subtitle,
+      description: data.description
+    });
+ }
 
 
  deleteData(data) {
   return  this.db.collection("articles").doc(data.payload.doc.id).delete();
 }
+
 }

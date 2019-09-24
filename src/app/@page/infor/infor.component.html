@@ -87,7 +87,7 @@
         <div class="row mx-0">
             <div class="col-md-8 animate-box" data-animate-effect="fadeInLeft">
                 <div>
-                    <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">News <img src="../../../assets/add-plus-button.svg" class="add" data-toggle="modal" data-target="#exampleModal"></div>
+                    <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">News <i class="fa fa-plus" data-toggle="modal" data-target="#exampleModal"></i> </div>
 
                 </div>
                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -100,26 +100,31 @@
                           </button>
                             </div>
                             <div class="modal-body">
-                                <form>
+                                <form #f="ngForm" (ngSubmit)="addData(f)">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Title</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Your title">
+                                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="title" placeholder="Your title" ngModel>
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputAutor">Autor</label>
-                                        <input type="email" class="form-control" id="exampleInputAutor1" aria-describedby="autorHelp" placeholder="Autor">
+                                        <input type="email" class="form-control" id="exampleInputAutor1" aria-describedby="autorHelp" name="autor" placeholder="Autor" ngModel>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputPhoto1">Photo</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Your title">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                                        </div>
+                                        <div class="custom-file">
+                                            <input #input (change)="previewFile(input)" type="file" class="custom-file-input" id="file" name="photo" ngModel>
+                                            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                        </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputSubtitle">Subtitle</label>
-                                        <input type="email" class="form-control" id="exampleInputSubtitle1" aria-describedby="SubtitleHelp" placeholder="Subtitle">
+                                        <input type="email" class="form-control" id="exampleInputSubtitle1" aria-describedby="SubtitleHelp" name="subtitle" placeholder="Subtitle" ngModel>
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputDescription1">Description</label>
-                                        <input type="email" class="form-control" id="exampleInputDescription1" aria-describedby="DescriptionHelp" placeholder="Description">
+                                        <input type="email" class="form-control" id="exampleInputDescription1" aria-describedby="DescriptionHelp" name="description" placeholder="Description" ngModel>
                                     </div>
 
                                     <button type="submit" class="btn btn-primary">Submit</button>
@@ -131,10 +136,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="row pb-4" *ngFor='let ar of items' (click)="delete(ar)">
+                <div class="row pb-4" *ngFor='let ar of items'>
                     <div class="col-md-5">
                         <div class="fh5co_hover_news_img">
-                            <div class="fh5co_news_img"><img src="{{ar.payload.doc.data().photoUrl}}" alt="" /></div>
+                            <div class="fh5co_news_img"><img src={{ar.payload.doc.data().photoUrl}} alt="" /></div>
                             <div></div>
                         </div>
                     </div>
@@ -144,12 +149,59 @@
                         </div>
                     </div>
                     <div class="col-md-2">
-                        <i class="far fa-minus-square"></i>
+                        <i class="fa fa-edit" data-toggle="modal" data-target="#exampleModal2" (click)='getArticleCurrent(ar)'></i>
+                        <i class="fa fa-minus-square" (click)="delete(ar)"></i>
+                    </div>
+                </div>
+
+
+                <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Edit article</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                                <form #f="ngForm" (ngSubmit)="updateData(f)" *ngIf="articleCurrent">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Title</label>
+                                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="title" placeholder="Your title" [(ngModel)]="articleCurrent.payload.doc.data().title">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputAutor">Autor</label>
+                                        <input type="email" class="form-control" id="exampleInputAutor1" aria-describedby="autorHelp" name="autor" placeholder="Autor" [(ngModel)]="articleCurrent.payload.doc.data().autor">
+                                    </div>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                                        </div>
+                                        <div class="custom-file">
+                                            <input #input (change)="previewFile(input)" type="file" class="custom-file-input" id="file" name="photo" ngModel>
+                                            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputSubtitle">Subtitle</label>
+                                        <input type="email" class="form-control" id="exampleInputSubtitle1" aria-describedby="SubtitleHelp" name="subtitle" placeholder="Subtitle" [(ngModel)]="articleCurrent.payload.doc.data().subtitle">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputDescription1">Description</label>
+                                        <input type="email" class="form-control" id="exampleInputDescription1" aria-describedby="DescriptionHelp" name="description" placeholder="Description" [(ngModel)]="articleCurrent.payload.doc.data().description">
+                                    </div>
+
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
             </div>
-
         </div>
     </div>
-</div>
