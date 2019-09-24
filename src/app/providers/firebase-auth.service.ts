@@ -22,4 +22,19 @@ export class FirebaseAuthService {
         console.log("error", error)
       })
   }
+  /**
+   * 
+   * @param email :String - Email user
+   * @param password : String - Password user 
+   */
+  logIn(email: string , password: string){
+    this.authFire.auth.signInWithEmailAndPassword(email, password).then(
+      reponse => {
+        console.log(reponse);
+
+      }
+    ).catch(error =>{
+      console.log("error", error)
+    })
+  }
 }
