@@ -4,6 +4,7 @@ import { FirebaseAuthService } from '../../providers/firebase-auth.service';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { map } from "rxjs/operators"; 
 import { CrudService } from 'src/app/providers/crud.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-infor',
@@ -31,6 +32,11 @@ export class InforComponent implements OnInit {
   //  this.crud.deleteData()
     // this.route.params.subscribe(params => {
     //   { this.IdUser = params.id;}
+  
+   }
+   addData(form: NgForm){
+     let data= form.value;
+     console.log(data)
     this.crud.getData().subscribe((data)=>{
       this.items = data;
    });
