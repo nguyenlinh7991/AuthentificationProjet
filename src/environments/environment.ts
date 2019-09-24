@@ -8,7 +8,7 @@ export const environment = {
   authDomain: "coursimie123.firebaseapp.com",
   databaseURL: "https://coursimie123.firebaseio.com",
   projectId: "coursimie123",
-  storageBucket: "",
+  storageBucket: "coursimie123.appspot.com",
   messagingSenderId: "1033227139898",
   appId: "1:1033227139898:web:f5d0f64398416cbb0eae03"
 };

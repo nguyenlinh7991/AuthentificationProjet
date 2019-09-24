@@ -13,8 +13,10 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
   }
   submitForm(){
-    console.log("Zoubida");
     this.fireBaseAuth.logIn(this.user.login, this.user.password);
   }
-  
+  submitfacebook(){
+      this.fireBaseAuth.doFacebookLogin()
+  }
+
 }

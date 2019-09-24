@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
 
     <div id="signupbox" style=" margin-top:50px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
         <div class="panel panel-info">
@@ -75,6 +75,39 @@
 
                 </form>
             </div>
+        </div>
+    </div>
+</div> -->
+
+<button type="button" class="btn btn-danger out" (click)="logOut()">Log out</button>
+
+
+<div class="container-fluid pb-4 pt-4 paddding">
+    <div class="container paddding">
+        <div class="row mx-0">
+            <div class="col-md-8 animate-box" data-animate-effect="fadeInLeft">
+                <div>
+                    <div class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4">News</div>
+                </div>
+                <div class="row pb-4" *ngFor='let ar of items' (click)="delete(ar)">
+                    <div class="col-md-5">
+                        <div class="fh5co_hover_news_img">
+                            <div class="fh5co_news_img"><img src="{{ar.payload.doc.data().photoUrl}}" alt="" /></div>
+                            <div></div>
+                        </div>
+                    </div>
+                    <div class="col-md-5 animate-box">
+                        <a href="single.html" class="fh5co_magna py-2">{{ar.payload.doc.data().title}}</a>
+                        <div class="fh5co_consectetur">{{ar.payload.doc.data().description}}
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <i class="far fa-minus-square"></i>
+                    </div>
+                </div>
+
+            </div>
+
         </div>
     </div>
 </div>

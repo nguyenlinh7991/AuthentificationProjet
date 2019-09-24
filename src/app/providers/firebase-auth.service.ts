@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Observable } from 'rxjs';
-import { callbackify } from 'util';
+import * as firebase from 'firebase/app';
 import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
@@ -33,7 +33,7 @@ export class FirebaseAuthService {
     this.authFire.auth.signInWithEmailAndPassword(email, password).then(
       reponse => {
         console.log(reponse)
-         this.route.navigate(['infor', reponse.user.refreshToken]);
+         this.route.navigate(['infor']);
       }
     ).catch(error =>{
         alert( error.message);
@@ -41,18 +41,28 @@ export class FirebaseAuthService {
   }
  
 
-  getDataByID(){
-    // var user = this.authFire.auth.currentUser;
-    // if (user != null) {
-    //   // name = user.displayName;
-    //   // email = user.email;
-    //   // photoUrl = user.photoURL;
-    //   // emailVerified = user.emailVerified;
-    //   // uid = user.uid;  
-    //   console.log(user)
-    //   return user;
-    // }
+  logout(){
+    this.authFire.auth.signOut()
+      .then(()=> {
+        this.route.navigate(['home']);
+      })
+    .catch(function(error) {
+      console.log(error)
+    });
   }
-  
-  
+  doFacebookLogin(){
+    return new Promise<any>((resolve, reject) => {
+      let provider = new firebase.auth.FacebookAuthProvider();
+      this.authFire.auth
+      .signInWithPopup(provider)
+      .then(res => {
+        resolve(res);
+        this.route.navigate(['infor'])
+      }, err => {
+        console.log(err);
+        reject(err);
+      })
+    })
+ }
+
 }
