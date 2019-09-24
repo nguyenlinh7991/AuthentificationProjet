@@ -14,6 +14,6 @@ export class HomeComponent implements OnInit {
   }
   submitForm(){
     console.log("Zoubida");
-    this.fireBaseAuth.signup(this.user.login, this.user.password);
+    this.fireBaseAuth.logIn(this.user.login, this.user.password);
   }
 }
