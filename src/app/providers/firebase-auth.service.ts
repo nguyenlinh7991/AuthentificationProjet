@@ -13,43 +13,54 @@ export class FirebaseAuthService {
    * 
    * @param email :String - Email user
    * @param password : String - Password user 
+   * sign up
    */
   signup(email: string , password: string){
       this.authFire.auth.createUserWithEmailAndPassword(email, password).then(
         reponse => {
-           console.log(reponse);
-
+           alert('User created')
+           this.route.navigate(['infor']);
         }
       ).catch(error =>{
-        console.log("error", error)
+        alert( error)
       })
   }
   /**
    * 
    * @param email :String - Email user
    * @param password : String - Password user 
+   * login or sign up 
    */
   logIn(email: string , password: string){
     this.authFire.auth.signInWithEmailAndPassword(email, password).then(
       reponse => {
-        console.log(reponse)
          this.route.navigate(['infor']);
       }
     ).catch(error =>{
-        alert( error.message);
+        this.signup(email,password);
     })
   }
  
-
+  /**
+   * 
+   * @param 
+   * log out
+   */
   logout(){
     this.authFire.auth.signOut()
       .then(()=> {
         this.route.navigate(['home']);
       })
     .catch(function(error) {
-      console.log(error)
+         alert(error.message)
     });
   }
+
+    /**
+   * 
+   * @param 
+   * authtification with facebook
+   */
   doFacebookLogin(){
     return new Promise<any>((resolve, reject) => {
       let provider = new firebase.auth.FacebookAuthProvider();
@@ -59,7 +70,7 @@ export class FirebaseAuthService {
         resolve(res);
         this.route.navigate(['infor'])
       }, err => {
-        console.log(err);
+       alert(err);
         reject(err);
       })
     })

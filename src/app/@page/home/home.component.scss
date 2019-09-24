@@ -1,41 +1,5 @@
-/*//////////////////////////////////////////////////////////////////
-[ FONT ]*/
-
-// @font-face {
-//     font-family: Poppins-Regular;
-//     src: url('../../../fonts/poppins/Poppins-Regular.ttf');
-// }
-// @font-face {
-//     font-family: Poppins-Medium;
-//     src: url('../../../fonts/poppins/Poppins-Medium.ttf');
-// }
-// @font-face {
-//     font-family: Poppins-Bold;
-//     src: url('../../../fonts/poppins/Poppins-Bold.ttf');
-// }
-// @font-face {
-//     font-family: Poppins-SemiBold;
-//     src: url('../../../fonts/poppins/Poppins-SemiBold.ttf');
-// }
-
-/*//////////////////////////////////////////////////////////////////
-  [ RESTYLE TAG ]*/
-
-// * {
-//     margin: 0px;
-//     padding: 0px;
-//     box-sizing: border-box;
-// }
-// body,
-// html {
-//     height: 100%;
-//     font-family: Poppins-Regular, sans-serif;
-// }
-
-/*---------------------------------------------*/
-
 a {
-    font-family: Poppins-Regular;
+    font-family: 'Muli', sans-serif;
     font-size: 14px;
     line-height: 1.7;
     color: #666666;
@@ -68,7 +32,7 @@ h6 {
 }
 
 p {
-    font-family: Poppins-Regular;
+    font-family: 'Muli', sans-serif;
     font-size: 14px;
     line-height: 1.7;
     color: #666666;
@@ -190,7 +154,7 @@ iframe {
   [ Utility ]*/
 
 .txt1 {
-    font-family: Poppins-Regular;
+    font-family: 'Muli', sans-serif;
     font-size: 13px;
     color: #e5e5e5;
     line-height: 1.5;
@@ -270,7 +234,7 @@ iframe {
 }
 
 .login100-form-title {
-    font-family: Poppins-Medium;
+    font-family: 'Muli', sans-serif;
     font-size: 30px;
     color: #fff;
     line-height: 1.2;
@@ -291,7 +255,7 @@ iframe {
 }
 
 .input100 {
-    font-family: Poppins-Regular;
+    font-family: 'Muli', sans-serif;
     font-size: 16px;
     color: #fff;
     line-height: 1.2;
@@ -331,7 +295,7 @@ iframe {
 }
 
 .focus-input100::after {
-    font-family: Material-Design-Iconic-Font;
+    font-family: 'Muli', sans-serif;
     font-size: 22px;
     color: #fff;
     content: attr(data-placeholder);
@@ -388,7 +352,7 @@ iframe {
 }
 
 .label-checkbox100 {
-    font-family: Poppins-Regular;
+    font-family: 'Muli', sans-serif;
     font-size: 13px;
     color: #fff;
     line-height: 1.2;
@@ -400,7 +364,7 @@ iframe {
 
 .label-checkbox100::before {
     content: "\f26b";
-    font-family: Material-Design-Iconic-Font;
+    font-family: 'Muli', sans-serif;
     font-size: 13px;
     color: transparent;
     display: -webkit-box;
@@ -444,7 +408,7 @@ iframe {
 }
 
 .login100-form-btn {
-    font-family: Poppins-Medium;
+    font-family: 'Muli', sans-serif;
     font-size: 16px;
     color: #555555;
     line-height: 1.2;
@@ -487,13 +451,12 @@ iframe {
 }
 
 .login100-form-btn:hover {
-    color: #fff;
+    opacity: 0.7;
 }
 
-.login100-form-btn:hover:before {
-    opacity: 0;
-}
-
+// .login100-form-btn:hover:before {
+//     opacity: 0;
+// }
 
 /*------------------------------------------------------------------
   [ Responsive ]*/
@@ -528,7 +491,7 @@ iframe {
     transform: translateY(-50%);
     right: 0px;
     pointer-events: none;
-    font-family: Poppins-Regular;
+    font-family: 'Muli', sans-serif;
     color: #c80000;
     font-size: 13px;
     line-height: 1.4;
@@ -543,7 +506,7 @@ iframe {
 
 .alert-validate::after {
     content: "\f12a";
-    font-family: FontAwesome;
+    font-family: 'Muli', sans-serif;
     font-size: 16px;
     color: #c80000;
     display: block;
@@ -10442,7 +10405,7 @@ iframe {
 }
 
 .facebook {
-    widows: 50px;
+    width: 50px;
     height: 50px;
 }
 

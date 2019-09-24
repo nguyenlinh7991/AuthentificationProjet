@@ -12,9 +12,12 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  // connect with username and password or sign up
   submitForm(){
     this.fireBaseAuth.logIn(this.user.login, this.user.password);
   }
+  // connect with facebook
   submitfacebook(){
       this.fireBaseAuth.doFacebookLogin()
   }

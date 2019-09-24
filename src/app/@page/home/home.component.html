@@ -6,32 +6,25 @@
             <form class="login100-form validate-form">
 
 
-                <span class="login100-form-title p-b-34 p-t-27">Log in </span>
+                <span class="login100-form-title p-b-34 p-t-27">Log in / Sign Up </span>
 
                 <div class="wrap-input100 validate-input" data-validate="Enter username">
                     <input class="input100" type="text" name="username" placeholder="Username" [(ngModel)]='user.login'>
-                    <span class="focus-input100" data-placeholder="&#xf207;"></span>
 
                 </div>
 
                 <div class="wrap-input100 validate-input" data-validate="Enter password">
                     <input class="input100" type="password" name="pass" placeholder="Password" [(ngModel)]='user.password'>
-                    <span class="focus-input100" data-placeholder="&#xf191;"></span>
                 </div>
                 <div id="fb-login-button"></div>
 
 
                 <div class="container-login100-form-btn">
                     <button class="login100-form-btn" (click)='submitForm()'> Login </button>
-
-
                 </div>
 
-
-
-
                 <div class="logo">
-                    <img src="../../../assets/images/facebook.png" class="login100-form-btn facebook" (click)='submitfacebook()' alt="facebook" />
+                    <img src="../../../assets/images/facebook.png" class=" facebook" (click)='submitfacebook()' alt="facebook" />
                 </div>
 
 

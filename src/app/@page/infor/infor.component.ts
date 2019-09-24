@@ -24,21 +24,19 @@ export class InforComponent implements OnInit {
    }
 
   ngOnInit() {
+    // get all of articles and display
       this.crud.getData().subscribe((data)=>{
       this.items = data;
    });
-    // this.crud.addData(this.data)
-    // this.crud.getData();
-  //  this.crud.deleteData()
-    // this.route.params.subscribe(params => {
-    //   { this.IdUser = params.id;}
-  
    }
 
+
+   // return article which you want to change
    getArticleCurrent(ar){
-  
       return this.articleCurrent =ar;
    }
+
+   // add object to database
    addData(form: NgForm){
      let data= form.value;
      let dataArticle:article= {  
@@ -51,17 +49,21 @@ export class InforComponent implements OnInit {
      this.crud.addData(dataArticle);
      form.reset();
    }
+
+   // delete object
    delete(article){
     this.crud.deleteData(article)
    }
 
+   //logout
    logOut(){
      this.firebase.logout();
    }
 
 
 
-  previewFile(fileToRead) {
+  previewFile(fileToRead,e) {
+    this.nameFile= e.target.files[0].name;
     if (fileToRead.files.length > 0) {
       const fileReader = new FileReader();
       let imageToUpload =fileToRead.files[0];
@@ -80,7 +82,11 @@ export class InforComponent implements OnInit {
   updateData(form:NgForm){
     let id= this.articleCurrent.payload.doc.id;
     let data= form.value;
-    console.log(data)
+    if(this.url != undefined){
+       data.photo= this.url;
+    }else{
+      data.photo= this.articleCurrent.payload.doc.data().photoUrl;
+    }
      this.crud.updateData(id,data);
   }
 }

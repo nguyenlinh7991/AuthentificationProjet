@@ -1006,9 +1006,46 @@ a:hover {
     justify-self: right;
     margin-left: auto;
     margin-top: 1rem;
+    margin-right: 1rem;
 }
 
 .add {
     width: 2rem;
     height: 2rem;
+}
+
+.new {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+i {
+    font-size: 1.7rem;
+}
+
+.fa-edit {
+    margin-right: 1.5rem;
+    color: #00CC00;
+}
+
+.fa-minus-square {
+    color: #dc3545
+}
+
+.fa-plus {
+    color: #0000cc;
+}
+
+.title {
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    color: darkslategrey;
+    text-decoration: underline;
+}
+
+.sub {
+    font-weight: bold;
+    font-size: 1.2rem;
 }
