@@ -16,4 +16,9 @@ export class HomeComponent implements OnInit {
     console.log("Zoubida");
     this.fireBaseAuth.logIn(this.user.login, this.user.password);
   }
+
+  submitfacebook(){
+    
+  }
+
 }
